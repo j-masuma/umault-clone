@@ -1,8 +1,17 @@
 import React from 'react'
+import HeroSection from '../components/homePageComponents/Herosection'
+import Hire from '../components/homePageComponents/Hire'
+import CSection from '../components/homePageComponents/CSection'
+import BSection from '../components/homePageComponents/BSection'
 
 function HomePage() {
   return (
-    <div className='underline'>HomePage</div>
+    <>
+      <HeroSection/>
+      <BSection/>
+      <CSection/>
+      <Hire/>
+    </>
   )
 }
 

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { GoUnmute } from "react-icons/go";
+import { RiVolumeMuteFill } from "react-icons/ri";
 
 const videos = {
   PacBio: "https://videos.umault.com/973_-_pacbio_-_vega_launch_final_110124%20(1080p).mp4",
@@ -9,42 +11,103 @@ const videos = {
 
 const HeroSection = () => {
   const [videoSrc, setVideoSrc] = useState(videos.PacBio);
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    setProgress(0); // Reset progress when video changes
+  }, [videoSrc]);
+
+  
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      setProgress(currentProgress);
+    }
+  };
 
   return (
-    <div className="relative w-full h-screen bg-gray-900 text-white overflow-hidden ">
+    <div className="relative w-full h-screen bg-black text-white overflow-hidden items-center">
       {/* Background Video */}
       <video
+        ref={videoRef}
         key={videoSrc}
         src={videoSrc}
         autoPlay
         loop
-        muted
-        className="absolute inset-0 w-full h-full object-cover"
+        muted={isMuted}
+        className=" w-full h-full object-cover"
+        onTimeUpdate={handleTimeUpdate} 
       />
 
-      {/* Overlay Text */}
-      <div className="absolute top-1/4 left-16 text-4xl font-bold">
-        <span className="block">BOLD CREATIVE</span>
-        <span className="block">THAT SHATTERS</span>
-        <span className="block">MARKETING FORMULAS</span>
-      </div>
-
-      {/* Sidebar Menu */}
-      <div className="absolute right-16 top-1/3 space-y-4 text-lg font-semibold">
-        {Object.keys(videos).map((key) => (
-          <div
-            key={key}
-            className={`cursor-pointer border-b-2 border-transparent hover:border-white transition-opacity ${
-              videoSrc === videos[key] ? "border-white opacity-100" : "opacity-70"
-            }`}
-            onClick={() => setVideoSrc(videos[key])}
-          >
-            {key}
+      <div className="w-[80%]">
+        {/* Overlay Text */}
+          <div className="absolute top-1/4 left-16 text-3xl font-bold">
+            <span className="block">BOLD CREATIVE</span>
+            <span className="block ml-24">THAT SHATTERS</span>
+            <span className="block">MARKETING FORMULAS</span>
           </div>
-        ))}
+
+          {/* Sidebar Menu */}
+          <div className="absolute right-16 top-1/3 space-y-8 text-lg font-semibold w-fit">
+            {Object.keys(videos).map((key) => (
+              <div
+                key={key}
+                className="cursor-pointer group"
+                onClick={() => setVideoSrc(videos[key])}
+              >
+                {/* Row for mute button and video name */}
+                <div className="flex  items-center gap-4">
+                  {/* Fixed width container for mute button to avoid shifting */}
+                  <div className="w-8 flex justify-center">
+                    {videoSrc === videos[key] && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevents changing video when clicking the button
+                          toggleMute();
+                        }}
+                        className="bg-gray-800 text-white p-1 rounded-full shadow-md"
+                      >
+                        {isMuted ? <RiVolumeMuteFill /> : <GoUnmute />
+                        }
+                      </button>
+                    )}
+                  </div>
+                  <div>
+                    <span className="whitespace-nowrap text-2xl">{key}</span>
+                  
+
+                    {/* Progress Bar - Only visible for active video */}
+                    {videoSrc === videos[key] && (
+                      <div className="w-[250px] h-1 bg-gray-700 rounded-md mt-1 overflow-hidden">
+                        <div
+                          className="h-full bg-white rounded-md transition-all duration-300"
+                          style={{ width: `${progress}%` }}
+                        ></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
       </div>
     </div>
   );
 };
 
-export default HeroSection;
+
+
+
+
+export default HeroSection
+
+

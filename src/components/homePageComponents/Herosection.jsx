@@ -49,15 +49,15 @@ const HeroSection = () => {
       />
 
       <div className="w-[80%]">
-        {/* Overlay Text */}
-          <div className="absolute top-1/4 left-16 text-3xl font-bold">
+        {/* Overlay Text       */}
+          <div className=" absolute top-1/4 left-3 md:left-4 lg:left-16 text-lg xs:text-xl md:text-2xl lg:text-3xl font-bold z-50">
             <span className="block">BOLD CREATIVE</span>
             <span className="block ml-24">THAT SHATTERS</span>
             <span className="block">MARKETING FORMULAS</span>
           </div>
 
           {/* Sidebar Menu */}
-          <div className="absolute right-16 top-1/3 space-y-8 text-lg font-semibold w-fit">
+          <div className="absolute right-3  md:right-4 lg:right-16 top-1/2 md:top-1/3 space-y-4 xs:space-y-6 md:space-y-8  font-semibold w-fit">
             {Object.keys(videos).map((key) => (
               <div
                 key={key}
@@ -65,7 +65,7 @@ const HeroSection = () => {
                 onClick={() => setVideoSrc(videos[key])}
               >
                 {/* Row for mute button and video name */}
-                <div className="flex  items-center gap-4">
+                <div className="flex  items-center gap-2 xs:gap-3 md:gap-4">
                   {/* Fixed width container for mute button to avoid shifting */}
                   <div className="w-8 flex justify-center">
                     {videoSrc === videos[key] && (
@@ -82,12 +82,12 @@ const HeroSection = () => {
                     )}
                   </div>
                   <div>
-                    <span className="whitespace-nowrap text-2xl">{key}</span>
+                    <span className="whitespace-nowrap text-md xs:text-lg md:text-xl lg:text-2xl">{key}</span>
                   
 
                     {/* Progress Bar - Only visible for active video */}
                     {videoSrc === videos[key] && (
-                      <div className="w-[250px] h-1 bg-gray-700 rounded-md mt-1 overflow-hidden">
+                      <div className="w-[150px] xs:w-[180px] md:w-[250px] h-1 bg-gray-700 rounded-md mt-1 overflow-hidden">
                         <div
                           className="h-full bg-white rounded-md transition-all duration-300"
                           style={{ width: `${progress}%` }}

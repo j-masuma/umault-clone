@@ -61,7 +61,7 @@ function Header() {
 
          {/* Mobile Menu */}
          {isMenuOpen && (
-            <div className="md:hidden block bg-white p-4 py-12 rounded-xl shadow-md absolute top-[-50px] left-0 w-[50%] mt-12 z-10">
+            <div className="md:hidden block bg-white p-4 py-12 rounded-b-xl shadow-md absolute top-[-50px] left-0 w-[50%] mt-12 z-10">
                 <div className="flex flex-col space-y-4 px-4 py-2">
                     <a
                         href="/"
@@ -86,12 +86,9 @@ function Header() {
                     </a>
                     
                     <button className='w-fit flex items-center gap-1 border-2 -ml-2 border-white bg-white hover:border-yellow-500 hover:bg-yellow-500 px-2 py-1 rounded-full shadow-lg '>
-                        Free Trial
-                        <span className='border-2 border-gray-800  bg-gray-800 rounded-[50%] p-1 text-white'>
-                            <GoArrowUpRight size={20}/>
-                        </span>
-                    
+                        Let's do this
                     </button>
+                    
                 </div>
             </div>
         )}

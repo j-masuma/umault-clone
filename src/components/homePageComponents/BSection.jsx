@@ -44,7 +44,7 @@ function BSection() {
                   <div className="flex justify-start xs:justify-center md:justify-start">
                     <video
                         ref={videoRef}
-                        className=" rounded-sm shadow-md w-[90%] xs:w-[80%]"
+                        className=" rounded-sm shadow-md w-[90%] xs:w-[90%]"
                         autoPlay
                         loop
                         muted={isMuted}

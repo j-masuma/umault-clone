@@ -8,9 +8,11 @@ const FloatingImages = () => {
     "/assets/images/float.svg",
     "/assets/images/float.svg",
     "/assets/images/float.svg",
+    "/assets/images/float.svg",
   ];
 
   const hoverImages = [
+    "/assets/images/uu.svg",
     "/assets/images/uu.svg",
     "/assets/images/uu.svg",
     "/assets/images/uu.svg",

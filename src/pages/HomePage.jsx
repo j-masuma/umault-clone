@@ -4,13 +4,15 @@ import Hire from '../components/homePageComponents/Hire'
 import CSection from '../components/homePageComponents/CSection'
 import BSection from '../components/homePageComponents/BSection'
 import DSection from '../components/homePageComponents/DSection'
-import {Revenue, Views} from '../components/homePageComponents/Performance'
+import {Results, Revenue, Top, Views} from '../components/homePageComponents/Performance'
 
 function HomePage() {
   return (
     <>
       <HeroSection/>
       <BSection/>
+      <Results/>
+      <Top/>
       <CSection/>
       <Views/>
       <Revenue/>

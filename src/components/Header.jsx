@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { GoArrowUpRight } from 'react-icons/go'
 
+
+
+import { motion} from "framer-motion";
 function Header() {
     const [isMenuOpen, setIsMenuOpen]=useState(false);
 
@@ -28,12 +30,7 @@ function Header() {
 
 
             {/* cta button */}
-            <div className='hidden md:flex bg-[#666666e6] p-1 rounded-md transform transition-transform duration-300 hover:scale-105'>
-                <button className='flex items-center gap-1 border-2 border-yellow-500 bg-yellow-500 hover:border-white hover:bg-white px-4 py-3 rounded-md shadow-md text-sm'>
-                    Let's do this
-                
-                </button>
-            </div>
+            <MovingButton/>
 
            
             <button
@@ -56,12 +53,13 @@ function Header() {
                 </svg>
             </button>
                 
+
             
         </nav>
 
          {/* Mobile Menu */}
          {isMenuOpen && (
-            <div className="md:hidden block bg-white p-4 py-12 rounded-b-xl shadow-md absolute top-[-50px] left-0 w-[50%] mt-12 z-10">
+            <div className="md:hidden block bg-white p-4 py-12 rounded-b-xl shadow-md absolute top-[-50px] left-0 w-[50%] mt-12 z-30">
                 <div className="flex flex-col space-y-4 px-4 py-2">
                     <a
                         href="/"
@@ -89,6 +87,7 @@ function Header() {
                         Let's do this
                     </button>
                     
+                    
                 </div>
             </div>
         )}
@@ -96,6 +95,41 @@ function Header() {
     </header>
   )
 }
+
+
+
+function MovingButton() {
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+  
+    const handleMouseMove = (e) => {
+      const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+      const x = (e.clientX - (left + width / 2)) * 0.1; 
+      const y = (e.clientY - (top + height / 2)) * 0.1;
+  
+      setPosition({ x, y });
+    };
+  
+    const handleMouseLeave = () => {
+      setPosition({ x: 0, y: 0 });
+    };
+  
+    return (
+      <div
+        className="hidden md:flex bg-[#666666e6] p-1 rounded-md transform transition-transform duration-300 "
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <motion.button
+          animate={{ x: position.x, y: position.y }}
+          transition={{ type: "spring", stiffness: 100, damping: 10 }}
+          className="flex items-center gap-1 border-2 border-yellow-500 bg-yellow-500 px-4 py-3 rounded-md shadow-md text-sm"
+        >
+          Let's do this
+        </motion.button>
+      </div>
+    );
+  }
+  
 
 export default Header
 

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { GoUnmute } from "react-icons/go";
 import { RiVolumeMuteFill } from "react-icons/ri";
+import { motion} from "framer-motion";
 
 const videos = {
   PacBio: "https://videos.umault.com/973_-_pacbio_-_vega_launch_final_110124%20(1080p).mp4",
@@ -16,7 +17,7 @@ const HeroSection = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setProgress(0); // Reset progress when video changes
+    setProgress(0); 
   }, [videoSrc]);
 
   
@@ -50,11 +51,17 @@ const HeroSection = () => {
 
       <div className="w-[80%]">
         {/* Overlay Text       */}
-          <div className=" absolute top-1/4 left-3 md:left-4 lg:left-16 text-lg xs:text-xl md:text-2xl lg:text-3xl font-bold z-50">
+          <motion.div 
+          className=" absolute top-1/4 left-3 md:left-4 lg:left-16 text-lg xs:text-xl md:text-2xl lg:text-3xl font-bold z-20"
+          initial={{ opacity: 0, y: 50 }} 
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          viewport={{ once: false, amount: 0.2 }}
+          >
             <span className="block">BOLD CREATIVE</span>
-            <span className="block ml-24">THAT SHATTERS</span>
+            <span className="block ml-20 xs:ml-24">THAT SHATTERS</span>
             <span className="block">MARKETING FORMULAS</span>
-          </div>
+          </motion.div>
 
           {/* Sidebar Menu */}
           <div className="absolute right-3  md:right-4 lg:right-16 top-1/2 md:top-1/3 space-y-4 xs:space-y-6 md:space-y-8  font-semibold w-fit">
@@ -109,5 +116,13 @@ const HeroSection = () => {
 
 
 export default HeroSection
+
+
+
+
+
+
+
+
 
 

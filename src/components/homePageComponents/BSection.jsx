@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { GoUnmute } from "react-icons/go";
 import { RiVolumeMuteFill } from "react-icons/ri";
 import FloatingImages from "./Floating";
+import { motion} from "framer-motion";
 
 function BSection() {
   const videoRef = useRef(null);
@@ -64,10 +65,24 @@ function BSection() {
               </div>
             </div>
             <div className="flex flex-col text-center">
-              <p className="text-md xs:text-xl md:text-2xl font-semibold mb-8">MAKE YOUR AUDIENCE SAY</p>
+              <motion.p 
+              className="text-md xs:text-xl md:text-2xl font-semibold mb-8"
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              viewport={{ once: false, amount: 0.2 }}
+               
+              >MAKE YOUR AUDIENCE SAY
+              </motion.p>
 
 
-              <h1 className="inline-block text-3xl xs:text-5xl md:text-6xl  lg:text-8xl font-bold align-middle items-center">
+              <motion.h1
+                className="inline-block text-3xl xs:text-5xl md:text-6xl  lg:text-8xl font-bold align-middle items-center"
+                initial={{ opacity: 0, y: 50 }} // Move M up separately
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                viewport={{ once: false, amount: 0.2 }}
+               >
                 “I DIDN'T REALIZE I WAS WATCHING AN AD... I JUST
                 <div className="inline-flex relative">
                   <video
@@ -99,7 +114,7 @@ function BSection() {
                   </button>
                 </div>
                 MUTED ICON WANTED TO KEEP WATCHING”
-              </h1>
+              </motion.h1>
             </div>
           </div>
         </div>

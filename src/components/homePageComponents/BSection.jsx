@@ -57,9 +57,9 @@ function BSection() {
                     {/* Mute/Unmute Button inside the video */}
                     <button
                         onClick={toggleMute}
-                        className="flex h-fit w-fit top-1 bg-gray-800 text-white p-2 rounded-full shadow-md z-50 -ml-12 mt-2"
+                        className="flex h-fit w-fit top-1 bg-gray-800 text-white p-2 rounded-full shadow-md z-50 -ml-10 mt-2"
                     >
-                        {isMuted ? "🔇" : "🔊"}
+                        {isMuted ? <RiVolumeMuteFill /> : <GoUnmute />}
                     </button>
                   </div>
               </div>
@@ -106,8 +106,7 @@ function BSection() {
                     aria-label={isMuted ? 'Unmute' : 'Mute'}
                   >
                     {isMuted ? (
-                      <RiVolumeMuteFill  className="w-2 h-2 md:w-4 md:h-4"/> 
-                      
+                      <RiVolumeMuteFill  className="w-2 h-2 md:w-4 md:h-4"/>   
                     ) : (
                       <GoUnmute className="w-2 h-2 md:w-4 md:h-4" />
                     )}

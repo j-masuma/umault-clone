@@ -30,8 +30,8 @@ const FloatingImages = () => {
 
       setPositions(
         images.map(() => ({
-          x: Math.random() * (clientWidth - 64), // 64px accounts for image width
-          y: Math.random() * (clientHeight - 64), // 64px accounts for image height
+          x: Math.random() * (clientWidth - 64), 
+          y: Math.random() * (clientHeight - 64), 
         }))
       );
     }
@@ -53,7 +53,7 @@ const FloatingImages = () => {
           )
         );
       }
-    }, 1000); // Move every 2 seconds
+    }, 1000); 
 
     return () => clearInterval(interval);
   }, [hoveredIndex]);

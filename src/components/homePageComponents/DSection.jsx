@@ -219,38 +219,5 @@ export function AnimatedText() {
 }
 
 
-// export function AnimatedText() {
-//   const textRef = useRef(null);
-//   const isInView = useInView(textRef, { margin: "0px 0px -10% 0px" });
-
-//   const text =
-//     "Watch out, when you hire Umault and create your company’s #1 top performing video… you become “the video person” in your company (we know, we’ve seen it happen).";
-
-//   const words = text.split(" ");
-
-//   const wordVariants = {
-//     hidden: { color: "gray" },
-//     visible: { color: "black", transition: { duration: 0.4 } }
-//   };
-
-//   return (
-//     <motion.p
-//       ref={textRef}
-//       className="w-[80%] md:w-1/3 text-lg text-center md:text-left font-medium"
-//       initial="hidden"
-//       animate={isInView ? "visible" : "hidden"}
-//       transition={{ staggerChildren: 0.2 }} // Delay each word
-//       style={{ display: "flex", flexWrap: "wrap", gap: "5px" }} // Ensures spacing between words
-//     >
-//       {words.map((word, index) => (
-//         <motion.span key={index} variants={wordVariants} className="inline-block">
-//           {word}
-//         </motion.span>
-//       ))}
-//     </motion.p>
-//   );
-// }
-
-
 
 export default DSection;

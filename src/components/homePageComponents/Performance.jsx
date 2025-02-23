@@ -62,7 +62,7 @@ function Performance() {
 const Results = () =>{
   const repeatCount = 7;
   return(
-    <div className='flex   bg-[#f2f2f2]'>
+    <div className='flex  bg-[#f2f2f2]'>
       <div className='bg-black  pl-4 xs:pl-5 md:pl-6'>
         <div className="mr-4 xs:mr-5 md:mr-6 ">
           {[...Array(repeatCount)].map((_, index) => (
@@ -71,7 +71,7 @@ const Results = () =>{
         </div>
       </div>
       <div className='bg-[#f2f2f2] min-h-screen flex items-center'>
-        <p className='text-3xl xs:text-5xl md:text-6xl lg:text-8xl font-[550] pl-8 md:leading-[5.5rem] lg:leading-[6.5rem]'>
+        <p className='text-3xl xs:text-5xl md:text-6xl lg:text-8xl font-[550] pl-8 md:leading-[5.5rem] lg:leading-[5.7rem]'>
           THE
           <br />
           RESULTS
